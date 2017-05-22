@@ -22,6 +22,8 @@
 				<li class="navstar"><a href="#">Favorites</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+				<li><a id="consultDb" href="#">Consult Database!</a></li>
+				<li><a id='eraseDB' href="#">Erase your Database!</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>
@@ -51,19 +53,20 @@
 			</div>
 
 			<div id="bookContainer" class="bookDiv row"> 
-			</div>	
+			</div>
+			<div class='buttonContainer'>
 			<div class='btn-group buttons col-xs-4 col-xs-offset-4 clearfix'>
-				<button class="btn btn-primary like pull-left"> Like <span class="glyphicon glyphicon-thumbs-up"></span> </button> 
-				<button class="btn btn-primary dislike pull-right"> Dislike <span class="glyphicon glyphicon-thumbs-down"></span> </button>
+				<button data-opinion="Like" class="btn btn-primary like pull-left dataOpinion"> Like <span class="glyphicon glyphicon-thumbs-up"></span> </button> 
+				<button data-opinion="Dislike" class="btn btn-primary dislike pull-right dataOpinion"> Dislike <span class="glyphicon glyphicon-thumbs-down"></span> </button>
 				<button id='Backwards' class="center-block classFix btn btn-custom" href="#"><span class="glyphicon glyphicon-step-backward"></span></button>
 				<button class="star pull-right btn btn-custom" href="#"><span class="classFix likestar glyphicon glyphicon-star"></span></button>
 				<br>
 				<br>
 				<br>
 				<br>
-				<button id="restartButton" class="center-block">Finish your discovery</button>	
+				<button id="restartButton" class="center-block">End your discovery</button>	
 			</div>
-
+</div>
 		</div>
 
 		<div id="Favs" class="container">
