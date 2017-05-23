@@ -7,7 +7,7 @@
 }
 
 .book.active{
-	display: block;
+	display: block !important;
 }
 
 
@@ -25,10 +25,9 @@ sub {
 p{
 	color: white;
 	width: 250px;
-	height: 115px;
+	height: 115px !important;
 	margin-right:45px;
 	margin-left: 45px;
-/*	margin-bottom: 25px;*/
 	text-align:center;
 }
 
@@ -103,14 +102,13 @@ border:7px solid black;
 	float:none !important;
 }
 
-.likedbooks, .buttons, #bookContainer, #endPage, #myTable{
+.likedbooks, .buttons, #bookContainer, #endPage{
 	display: none;
 }
 
 .star, #Backwards {
   display:inline-block;
 }
-
 
 /*.buttonStart {
   border-radius: 4px;
