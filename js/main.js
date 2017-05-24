@@ -41,7 +41,11 @@ function loadDataAPI(book) {
 	});
 
 	$("h1.limitChar").text(function(index, currentText){
-		return (currentText.substr(0,35));
+		return (currentText.substr(0,40));
+	});
+
+	$("sub.limitChar").text(function(index, currentText){
+		return (currentText.substr(0,25));
 	});
 }
 
@@ -49,37 +53,55 @@ function AddRow($id,$opinion,$title,$author){
 	$('#myTable tbody').append('<tr class="' + (($opinion == "Like") ? 'success' : 'danger') + '"><td>' + $title + '</td><td>' + $author + '</td><td>' + $opinion + '</td></tr>');
 }
 
-var APIKey = "AIzaSyCDUYF-KWjYdomkZXg3LasiWjhUqcP12rk"
-var UserID = "112927202455529669623"
-var ShelfID = "1002"
+// var APIKey = "AIzaSyCDUYF-KWjYdomkZXg3LasiWjhUqcP12rk"
+// var UserID = "112927202455529669623"
+// var ShelfID = "1002"
 
-$.ajax({
-	url:"https://www.googleapis.com/books/v1/users/" + UserID + "/bookshelves/" + ShelfID + "/volumes?key=" + APIKey
+// $.ajax({
+// 	url:"https://www.googleapis.com/books/v1/users/" + UserID + "/bookshelves/" + ShelfID + "/volumes?key=" + APIKey
 
-}).done(function(data) {
-	$.each(data.items, function(index,item) {
-		loadDataAPI(item);
-	});
-	console.log(data);
-});
 
+
+// }).done(function(data) {
+// 	$.each(data.items, function(index,item) {
+// 		loadDataAPI(item);
+// 	});
+
+// });
 
 
 $('#submit').click(function(){
-	
-	var search = $('#search').val();
-	var terms = 'inauthor'
 
-	$.ajax({
-	url:"https://www.googleapis.com/books/v1/volumes?q=" + search + "+" + terms + "&key=" + APIKey
+	// $('select').change(function() {
+// });	
+	var APIKey = "AIzaSyCDUYF-KWjYdomkZXg3LasiWjhUqcP12rk"
+	var search = $('#search').val();
+	var filter = $('#searchFilter').val();
+    var switchstr = $("#filterOptions option:selected").val();
+
+    switch(switchstr){
+
+	case "intitle":
+		break;
+	case "inauthor":
+		break;
+	case "inpublisher":
+		break;
+	case "subject":
+	}
+
+$.ajax({
+	url:"https://www.googleapis.com/books/v1/volumes?q=" + search + "+" + switchstr + ':' + filter + "&key=" + APIKey,
 
 }).done(function(data) {
 	$.each(data.items, function(index,book) {
 		loadDataAPI(book);
 	});
-	console.log(data);
+	// console.log(data);
 });
+
 });
+
 
 var inAnimation = false;
 $('.dataOpinion').click(function(){
@@ -168,6 +190,9 @@ $("#startButton").click(function(){
 
 $("#clearTable").click(function() {
 	$("#myTable td").parent().remove();
+	db.transaction(function (tx) {
+	tx.executeSql('DROP TABLE books');
+	});
 });
 
 $(".home").click(function HomePage() {
@@ -178,11 +203,10 @@ $(".home").click(function HomePage() {
 });
 
 $("#Rewind").click(function() {
-	$("#startPage").show()
-	$("#bookContainer").hide();
+	$("#bookContainer").show();
 	$("#endPage").hide();
 	$(".likedbooks").hide();
-	$('.buttons').hide();
+	$('.buttons').show();
 });
 
 $("#restartButton").click(function(){
@@ -231,3 +255,20 @@ $(document).ready(function(){
 });
 
 //  		End of Buttons
+
+// $('#search').keyup(function(e) {
+//     clearTimeout($.data(this, 'timer'));
+//     if (e.keyCode == 13)
+//       search(true);
+//     else
+//       $(this).data('timer', setTimeout(search, 500));
+// });
+
+// function search(force) {
+//     var existingString = $("#search").val();
+//     if (!force && existingString.length < 3) return; //wasn't enter, not > 2 char
+//     $.get('/Tracker/Search/' + existingString, function(data) {
+//         $('divFavs').html(data);
+//         $('#favspage').show();
+//     });
+// }

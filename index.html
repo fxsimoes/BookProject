@@ -27,14 +27,24 @@
 				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>
+			<ul class='nav navbar-nav navbar-left'>
+			
+			</ul>
 			<form class="navbar-form navbar-left">	
 				<div class="form-group">
-					<input type="text" id='search' name='search' class="form-control" placeholder="Search">
+					<input type="text" id='search' class="form-control" placeholder="Search"></input>
+					<input type="text" id='searchFilter' class="form-control" placeholder="Filter search by:  ----->"></input>
 				</div>
 				<button class="btn btn-default" id='submit' type="submit">
-					<i class="glyphicon glyphicon-search"></i>
-				</form>
+					<i class="glyphicon glyphicon-search"></i></button>
 
+				</form>
+				<select class='form-control navbar-form navbar-left' id='filterOptions'>
+					<option value='intitle'>Title</option>
+					<option value='inauthor'>Author</option>
+					<option value='inpublisher'>Publisher</option>
+					<option value='subject'>Genre</option>
+				</select>
 			</div>
 		</nav>
 
@@ -48,7 +58,7 @@
 				<img src="https://media.giphy.com/media/46kl1Zvl499OE/giphy.gif" style='width: 750px; height: 550px;' id='clickimg' class='center-block'>
 			</div>
 			<div id="endPage">
-				<br> oi
+				<br>
 			</div>
 
 			<div id="bookContainer" class="bookDiv row"> 
@@ -94,7 +104,7 @@
 							</tbody>
 						</table>
 						<button id="clearTable" class="btn btn-primary pull-right">  Clear Likes/Dislikes  <span class="glyphicon glyphicon-trash"></span> </button>
-						<button id='Rewind' class='btn btn-primary pull-left'><span class='glyphicon glyphicon-fast-backward'></span>   Start Over</button>
+						<button id='Rewind' class='btn btn-primary pull-left'><span class='glyphicon glyphicon-fast-backward'></span>   Return to your search</button>
 					</div>
 				</div>
 			</div>
