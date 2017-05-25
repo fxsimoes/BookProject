@@ -9,11 +9,9 @@
 </head>
 
 <body>
-	<!-- NAVIGATION BAR WITH SEARCH AND LOGIN -->
-
 	<nav class="navbar navbar-inverse">
 		<div class="container-fluid">
-			<div class="navbar-header">
+			<div class="navbar-header collapsed">
 				<a class="navbar-brand" href="#"></a>
 			</div>
 			<ul class="nav navbar-nav">
@@ -27,24 +25,21 @@
 				<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 				<li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 			</ul>
-			<ul class='nav navbar-nav navbar-left'>
-			
-			</ul>
-			<form class="navbar-form navbar-left">	
+			<div class="navbar-form navbar-left" style='margin:0'>	
 				<div class="form-group">
-					<input type="text" id='search' class="form-control" placeholder="Search"></input>
+					<input type="text" id='search' name='search' class="form-control" placeholder="Search"></input>
 					<input type="text" id='searchFilter' class="form-control" placeholder="Filter search by:  ----->"></input>
 				</div>
 				<button class="btn btn-default" id='submit' type="submit">
 					<i class="glyphicon glyphicon-search"></i></button>
 
-				</form>
-				<select class='form-control navbar-form navbar-left' id='filterOptions'>
-					<option value='intitle'>Title</option>
-					<option value='inauthor'>Author</option>
-					<option value='inpublisher'>Publisher</option>
-					<option value='subject'>Genre</option>
+				<select class='form-control navbar-form' id='filterOptions'>
+					<option value='Title'>Title</option>
+					<option value='Author'>Author</option>
+					<option value='Publisher'>Publisher</option>
+					<option value='Genre'>Genre</option>
 				</select>
+			</div>
 			</div>
 		</nav>
 
@@ -61,14 +56,14 @@
 				<br>
 			</div>
 
-			<div id="bookContainer" class="bookDiv row"> 
-			</div>
+			<div id="bookContainer" class="bookDiv row"></div>
 			<div class='buttonContainer'>
 			<div class='btn-group buttons col-xs-4 col-xs-offset-4 clearfix'>
 				<button data-opinion="Like" class="btn btn-primary like pull-left dataOpinion"> Like <span class="glyphicon glyphicon-thumbs-up"></span> </button> 
 				<button data-opinion="Dislike" class="btn btn-primary dislike pull-right dataOpinion"> Dislike <span class="glyphicon glyphicon-thumbs-down"></span> </button>
 				<button id='Backwards' class="center-block classFix btn btn-custom" href="#"><span class="glyphicon glyphicon-step-backward"></span></button>
 				<button class="star pull-right btn btn-custom" href="#"><span class="classFix likestar glyphicon glyphicon-star"></span></button>
+
 				<br>
 				<br>
 				<br>

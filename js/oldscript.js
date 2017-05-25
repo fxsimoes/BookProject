@@ -122,3 +122,22 @@
 // 	$book = $(".book.active");
 // 	var title = $book.children("h1").text();
 // });
+
+
+//			BUSCAR LIVROS A LIVRARIA DA GOOGLEBOOKS
+
+// var APIKey = "AIzaSyCDUYF-KWjYdomkZXg3LasiWjhUqcP12rk"
+// var UserID = "112927202455529669623"
+// var ShelfID = "1002"
+
+// $.ajax({
+// 	url:"https://www.googleapis.com/books/v1/users/" + UserID + "/bookshelves/" + ShelfID + "/volumes?key=" + APIKey
+
+
+
+// }).done(function(data) {
+// 	$.each(data.items, function(index,item) {
+// 		loadDataAPI(item);
+// 	});
+
+// });
