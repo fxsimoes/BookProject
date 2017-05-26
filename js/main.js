@@ -76,6 +76,10 @@ function getAjax(){
 		var terms='+subject:';
 	}
 
+	if ($filter){
+		var terms='';
+	}
+
 	$.ajax({
 	url:"https://www.googleapis.com/books/v1/volumes?q=" + search + terms + filter + "&key=" + APIKey,
 
@@ -84,8 +88,8 @@ function getAjax(){
 		loadDataAPI(book);
 		});
 	});
-}
 
+}
 			// Orders the data received by AJAX and adds $opinion (Like/Dislike)
 var inAnimation = false;
 $('.dataOpinion').click(function Opinion(){
@@ -112,8 +116,10 @@ $('.dataOpinion').click(function Opinion(){
 		}
 		else {			
 			$book.removeClass('active');
-			$next.addClass('active');}
+			$next.addClass('active');
+		}
 });
+
 
 $(".navstar").click(function(){
 	$(".favorites").addClass("active");
@@ -137,6 +143,11 @@ $('#submit').click(function(){
 $('#search, #searchFilter').keyup(function(event){
 	if(event.which == 13){
 		getAjax();
+		$('#bookContainer').show();
+		$("#startPage").hide();
+		$("#endPage").show();
+		$(".favorites").hide();
+		$('.buttons').show();
 	}
 });
 
@@ -155,6 +166,7 @@ $(".navliked").click(function(){
 	$(".favorites").hide();
 	$("#myTable").show();
 	$('.buttons').hide();
+	$(".likedbooks").show();
 });
 
 $("#startButton").click(function(){
@@ -183,24 +195,6 @@ $("#Rewind").click(function() {
 	$("#endPage").hide();
 	$(".likedbooks").hide();
 	$('.buttons').show();
-});
-
-$("#restartButton").click(function(){
-	$("#endPage").hide();
-	$("#startPage").show();
-	$("#bookContainer").hide();
-	$(".favorites").hide();
-	$('.buttons').hide();
-});
-
-$('#consultDb').click(function(){
-	db.transaction(function (tx) {
-		tx.executeSql('SELECT * FROM books', [], function (tx, results) {
-			$.each(results.rows,function(index,item){
-	   			console.log(item);
-	   		});
-		}, null);
-	});
 });
 
 $('#Backwards').click(function() {
@@ -232,8 +226,26 @@ $(document).ready(function(){
 	}); 
 });
 
-$('#eraseDB').click(function(){
-	db.transaction(function (tx) {
-		tx.executeSql('DROP TABLE books');
-	});
-});
+// $('#eraseDB').click(function(){
+// 	db.transaction(function (tx) {
+// 		tx.executeSql('DROP TABLE books');
+// 	});
+// });
+
+// $("#restartButton").click(function(){
+// 	$("#endPage").hide();
+// 	$("#startPage").show();
+// 	$("#bookContainer").hide();
+// 	$(".favorites").hide();
+// 	$('.buttons').hide();
+// });
+
+// $('#consultDb').click(function(){
+// 	db.transaction(function (tx) {
+// 		tx.executeSql('SELECT * FROM books', [], function (tx, results) {
+// 			$.each(results.rows,function(index,item){
+// 	   			console.log(item);
+// 	   		});
+// 		}, null);
+// 	});
+// });
